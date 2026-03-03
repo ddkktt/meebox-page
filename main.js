@@ -41,11 +41,16 @@ if (demosGrid) {
     const src = `demos/${encodeURIComponent(demo.file)}`;
     const cardClass = idx === 0 ? 'demo-card demo-card-featured' : 'demo-card';
     const badge = idx === 0 ? 'Demo estelar' : `Demo ${idx + 1}`;
-    const preload = idx === 0 ? 'metadata' : 'none';
     return `
       <article class="${cardClass}" data-animate>
         <div class="demo-video-wrap">
-          <video controls preload="${preload}" playsinline>
+          <div class="video-placeholder">
+            <svg viewBox="0 0 24 24" class="play-icon">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="1.5"/>
+              <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
+            </svg>
+          </div>
+          <video controls preload="metadata" playsinline>
             <source src="${src}" type="video/mp4">
             Tu navegador no soporta video HTML5.
           </video>
@@ -58,6 +63,25 @@ if (demosGrid) {
       </article>
     `;
   }).join('');
+
+  // Hide placeholder when video loads or plays
+  document.querySelectorAll('.demo-video-wrap video').forEach(video => {
+    const placeholder = video.previousElementSibling;
+
+    video.addEventListener('loadeddata', () => {
+      if (placeholder) placeholder.style.opacity = '0';
+    });
+
+    video.addEventListener('play', () => {
+      if (placeholder) placeholder.style.opacity = '0';
+    });
+
+    video.addEventListener('pause', () => {
+      if (video.currentTime === 0 && placeholder) {
+        placeholder.style.opacity = '1';
+      }
+    });
+  });
 }
 
 // ——— Intersection Observer for scroll animations ———
