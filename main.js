@@ -17,36 +17,44 @@ window.addEventListener('scroll', () => {
 });
 
 // ——— Demos video section ———
-const demoVideoFiles = [
-  'WhatsApp Video 2026-03-02 at 21.10.46.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.47.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.48.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.49.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.50 (1).mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.50.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.51.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.52.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.53 (1).mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.53.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.54 (1).mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.54.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.55.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.56.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.57.mp4',
-  'WhatsApp Video 2026-03-02 at 21.10.58.mp4',
+const demoVideos = [
+  {
+    file: 'WhatsApp Video 2026-03-02 at 21.10.46.mp4',
+    title: 'Escaparate Principal',
+    desc: 'El demo estelar para ver color intenso y contraste limpio en movimiento.',
+  },
+  {
+    file: 'WhatsApp Video 2026-03-02 at 21.10.47.mp4',
+    title: 'Claridad En Detalle',
+    desc: 'Nitidez uniforme para contenido de marca e información en pantalla.',
+  },
+  {
+    file: 'WhatsApp Video 2026-03-02 at 21.10.48.mp4',
+    title: 'Impacto Continuo',
+    desc: 'Transiciones fluidas y alto brillo sostenido para espacios de alto tráfico.',
+  },
 ];
 
 const demosGrid = document.getElementById('demos-grid');
 if (demosGrid) {
-  demosGrid.innerHTML = demoVideoFiles.map((file, idx) => {
-    const src = `demos/${encodeURIComponent(file)}`;
+  demosGrid.innerHTML = demoVideos.map((demo, idx) => {
+    const src = `demos/${encodeURIComponent(demo.file)}`;
+    const cardClass = idx === 0 ? 'demo-card demo-card-featured' : 'demo-card';
+    const badge = idx === 0 ? 'Demo estelar' : `Demo ${idx + 1}`;
+    const preload = idx === 0 ? 'metadata' : 'none';
     return `
-      <article class="demo-card" data-animate>
-        <video controls preload="metadata" playsinline>
-          <source src="${src}" type="video/mp4">
-          Tu navegador no soporta video HTML5.
-        </video>
-        <div class="demo-meta">Demo ${idx + 1}</div>
+      <article class="${cardClass}" data-animate>
+        <div class="demo-video-wrap">
+          <video controls preload="${preload}" playsinline>
+            <source src="${src}" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+          </video>
+        </div>
+        <div class="demo-meta">
+          <span class="demo-eyebrow">${badge}</span>
+          <h3>${demo.title}</h3>
+          <p>${demo.desc}</p>
+        </div>
       </article>
     `;
   }).join('');
