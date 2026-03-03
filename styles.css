@@ -375,6 +375,123 @@ nav.scrolled {
   letter-spacing: 0.1em;
 }
 
+/* ——— PARTNERS ——— */
+.partners {
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.12), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(220, 20, 60, 0.12), transparent 40%),
+    var(--surface);
+}
+
+.partners-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.partners-header {
+  max-width: 760px;
+  margin: 0 auto 2.4rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+
+.partners-header.visible { opacity: 1; transform: none; }
+
+.partners-header .section-desc {
+  margin: 0 auto;
+  max-width: 620px;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.partner-card {
+  border: 1px solid var(--border);
+  background: linear-gradient(175deg, rgba(18,18,18,0.94), rgba(10,10,10,0.96));
+  min-height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.partner-card.visible { opacity: 1; transform: none; }
+
+.partner-card:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 16px 34px rgba(0, 212, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+.partner-logo {
+  width: 100%;
+  max-width: 220px;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.4s ease;
+}
+
+.partner-card:hover .partner-logo {
+  filter: grayscale(0);
+}
+
+.partner-logo svg {
+  width: 100%;
+  display: block;
+}
+
+.partner-logo svg text {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.partner-logo-byd svg ellipse {
+  fill: none;
+  stroke: #e9272e;
+  stroke-width: 10;
+}
+
+.partner-logo-byd svg text {
+  fill: #e9272e;
+  font-size: 54px;
+}
+
+.partner-logo-geely svg rect {
+  fill: #162944;
+  stroke: #204a79;
+  stroke-width: 3;
+}
+
+.partner-logo-geely svg path {
+  fill: #d8e7ff;
+}
+
+.partner-logo-geely svg text {
+  fill: #d8e7ff;
+  font-size: 24px;
+}
+
+.partner-logo-audi svg circle {
+  fill: none;
+  stroke: #f2f2f2;
+  stroke-width: 6;
+}
+
+.partner-logo-audi svg text {
+  fill: #f2f2f2;
+  font-size: 26px;
+}
+
 /* ——— SECTIONS SHARED ——— */
 section { padding: 7rem 2rem; }
 
@@ -1005,6 +1122,7 @@ footer {
   .benefits-inner { grid-template-columns: 1fr; gap: 3rem; }
   .quote-inner { grid-template-columns: 1fr; gap: 3rem; }
   .quote-header { position: static; }
+  .partners-grid { grid-template-columns: 1fr; }
   .demos-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: auto;
@@ -1065,6 +1183,28 @@ footer {
 
   .stats { padding: 2.5rem 1.25rem; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+  .partners-header {
+    margin-bottom: 1.6rem;
+    text-align: left;
+  }
+
+  .partners-header .section-desc {
+    margin: 0;
+  }
+
+  .partners-grid {
+    gap: 0.9rem;
+  }
+
+  .partner-card {
+    min-height: 145px;
+    padding: 0.9rem;
+  }
+
+  .partner-logo {
+    max-width: 175px;
+  }
 
   .section-title { font-size: clamp(1.75rem, 6vw, 2.5rem); }
   .section-desc { font-size: 0.95rem; }
@@ -1165,6 +1305,14 @@ footer {
 
   .stat-number { font-size: 1.8rem; }
   .stat-label { font-size: 0.75rem; }
+
+  .partner-card {
+    min-height: 128px;
+  }
+
+  .partner-logo {
+    max-width: 158px;
+  }
 
   .section-label { font-size: 0.65rem; }
 
