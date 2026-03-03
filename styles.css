@@ -830,21 +830,127 @@ footer {
 }
 
 @media (max-width: 768px) {
-  nav { padding: 1rem 1.5rem; }
-  nav.scrolled { padding: 0.8rem 1.5rem; }
-  section { padding: 5rem 1.5rem; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-  .config-grid { grid-template-columns: 1fr; }
+  nav { padding: 1rem 1.25rem; }
+  nav.scrolled { padding: 0.8rem 1.25rem; }
+
+  .logo { font-size: 1.25rem; }
+
+  .nav-cta {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  section { padding: 4rem 1.25rem; }
+
+  .hero {
+    min-height: 100svh;
+    padding: 6rem 1.25rem 3rem;
+  }
+
+  .hero-glow.g1 { width: 300px; height: 300px; filter: blur(80px); }
+  .hero-glow.g2 { width: 250px; height: 250px; filter: blur(80px); }
+  .hero-glow.g3 { width: 150px; height: 150px; filter: blur(60px); }
+
+  .hero-tag { font-size: 0.65rem; letter-spacing: 0.2em; margin-bottom: 1.5rem; }
+  .hero-tag::before, .hero-tag::after { width: 24px; }
+
+  .hero h1 { margin-bottom: 1.25rem; }
+
+  .hero-sub {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-primary {
+    font-size: 0.78rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .scroll-hint { display: none; }
+
+  .stats { padding: 2.5rem 1.25rem; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+  .section-title { font-size: clamp(1.75rem, 6vw, 2.5rem); }
+  .section-desc { font-size: 0.95rem; }
+
+  .config-header { margin-bottom: 2.5rem; }
+  .config-grid { grid-template-columns: 1fr; gap: 1rem; }
   .config-card { aspect-ratio: 16 / 9; }
-  .form-row { grid-template-columns: 1fr; }
-  .quote-form { padding: 2rem; }
-  .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .config-card-content { padding: 1.25rem; }
+  .config-card h3 { font-size: 1.25rem; }
+  .config-card p { font-size: 0.82rem; opacity: 1; transform: none; }
+  .config-card-icon { width: 34px; height: 34px; margin-bottom: 0.75rem; }
+  .config-card-icon svg { width: 15px; height: 15px; }
+
+  .benefits-inner { gap: 2.5rem; }
+  .benefits-header .section-title br { display: none; }
+
+  .benefit-item {
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .benefit-icon { width: 38px; height: 38px; }
+  .benefit-icon svg { width: 17px; height: 17px; }
+  .benefit-item h4 { font-size: 0.95rem; }
+  .benefit-item p { font-size: 0.82rem; }
+
+  .quote-inner { gap: 2rem; }
+  .quote-header .section-title br { display: none; }
+  .quote-header .section-desc { margin-bottom: 1.5rem; }
+
+  .quote-form { padding: 1.5rem; }
+  .form-row { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px; /* prevents iOS zoom on focus */
+    padding: 0.85rem 0.9rem;
+  }
+
+  .form-group textarea { min-height: 100px; }
+
+  .btn-submit {
+    font-size: 0.8rem;
+    padding: 1rem 2rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .footer-logo { font-size: 1.1rem; }
+  .footer-copy { font-size: 0.75rem; }
 }
 
 @media (max-width: 480px) {
-  .hero h1 { font-size: 2.5rem; }
-  .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero-sub { font-size: 0.92rem; }
+
   .stat-number { font-size: 1.8rem; }
+  .stat-label { font-size: 0.75rem; }
+
+  .section-label { font-size: 0.65rem; }
+
+  .config-card { aspect-ratio: 4 / 3; }
+
+  .quote-features { gap: 0.75rem; }
+  .quote-feature { font-size: 0.82rem; }
+}
+
+/* ——— TOUCH DEVICE TWEAKS ——— */
+@media (hover: none) {
+  .config-card img { filter: brightness(0.5) saturate(0.7); }
+  .config-card p { opacity: 1; transform: none; }
+  .btn-primary:hover { transform: none; }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-submit:active { transform: scale(0.98); }
 }
 
 /* ——— NOISE OVERLAY ——— */
