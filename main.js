@@ -64,23 +64,34 @@ if (demosGrid) {
     `;
   }).join('');
 
-  // Hide placeholder when video loads or plays
+  // Hide placeholder when video has loaded enough content
   document.querySelectorAll('.demo-video-wrap video').forEach(video => {
     const placeholder = video.previousElementSibling;
 
-    video.addEventListener('loadeddata', () => {
+    // Hide placeholder when video has loaded metadata AND poster frame
+    const hidePlaceholder = () => {
+      if (placeholder && video.readyState >= 2) {
+        placeholder.style.opacity = '0';
+      }
+    };
+
+    video.addEventListener('loadeddata', hidePlaceholder);
+    video.addEventListener('canplay', hidePlaceholder);
+    video.addEventListener('playing', () => {
       if (placeholder) placeholder.style.opacity = '0';
     });
 
-    video.addEventListener('play', () => {
-      if (placeholder) placeholder.style.opacity = '0';
-    });
-
+    // Show placeholder if video is paused at the beginning
     video.addEventListener('pause', () => {
-      if (video.currentTime === 0 && placeholder) {
+      if (video.currentTime === 0 && placeholder && video.readyState < 2) {
         placeholder.style.opacity = '1';
       }
     });
+
+    // Trigger check if video is already loaded
+    if (video.readyState >= 2) {
+      hidePlaceholder();
+    }
   });
 }
 
