@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meebox — Cotización Enviada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .thanks-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .thanks-page .hero-glow { position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none; }
+  .thanks-page .g1 { width: 500px; height: 500px; background: var(--crimson-glow); top: -15%; left: -10%; }
+  .thanks-page .g2 { width: 400px; height: 400px; background: var(--cyan-glow); bottom: -10%; right: -10%; }
+  .thanks-check {
+    width: 80px; height: 80px; border: 2px solid var(--crimson); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .thanks-check svg { width: 36px; height: 36px; stroke: var(--crimson); fill: none; stroke-width: 2; }
+  .thanks-page h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; animation: fadeUp 0.6s ease forwards 0.2s; opacity: 0; }
+  .thanks-page p { font-size: 1.1rem; color: var(--text-dim); max-width: 450px; line-height: 1.6; margin-bottom: 2.5rem; animation: fadeUp 0.6s ease forwards 0.4s; opacity: 0; }
+  .thanks-page .btn-primary { animation: fadeUp 0.6s ease forwards 0.6s; opacity: 0; }
+</style>
+</head>
+<body>
+<div class="thanks-page">
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+  <div class="thanks-check">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <h1>¡Cotización enviada!</h1>
+  <p>Gracias por tu interés. Nuestro equipo revisará tu solicitud y te contactará en menos de 48 horas.</p>
+  <a href="index.html" class="btn-primary">Volver al inicio</a>
+</div>
+</body>
+</html>
