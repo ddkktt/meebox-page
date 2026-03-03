@@ -64,33 +64,25 @@ if (demosGrid) {
     `;
   }).join('');
 
-  // Hide placeholder when video has loaded enough content
+  // Show video and hide placeholder when loaded
   document.querySelectorAll('.demo-video-wrap video').forEach(video => {
     const placeholder = video.previousElementSibling;
 
-    // Hide placeholder when video has loaded metadata AND poster frame
-    const hidePlaceholder = () => {
-      if (placeholder && video.readyState >= 2) {
-        placeholder.style.opacity = '0';
+    const showVideo = () => {
+      if (video.readyState >= 2) {
+        video.classList.add('loaded');
+        if (placeholder) {
+          placeholder.style.opacity = '0';
+        }
       }
     };
 
-    video.addEventListener('loadeddata', hidePlaceholder);
-    video.addEventListener('canplay', hidePlaceholder);
-    video.addEventListener('playing', () => {
-      if (placeholder) placeholder.style.opacity = '0';
-    });
+    video.addEventListener('loadeddata', showVideo);
+    video.addEventListener('canplay', showVideo);
 
-    // Show placeholder if video is paused at the beginning
-    video.addEventListener('pause', () => {
-      if (video.currentTime === 0 && placeholder && video.readyState < 2) {
-        placeholder.style.opacity = '1';
-      }
-    });
-
-    // Trigger check if video is already loaded
+    // Check if already loaded
     if (video.readyState >= 2) {
-      hidePlaceholder();
+      showVideo();
     }
   });
 }

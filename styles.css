@@ -774,6 +774,12 @@ section { padding: 7rem 2rem; }
   height: 100%;
   object-fit: cover;
   background: #000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.demo-video-wrap video.loaded {
+  opacity: 1;
 }
 
 .demo-meta {
