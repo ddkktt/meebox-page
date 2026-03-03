@@ -16,6 +16,42 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
+// ——— Demos video section ———
+const demoVideoFiles = [
+  'WhatsApp Video 2026-03-02 at 21.10.46.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.47.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.48.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.49.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.50 (1).mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.50.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.51.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.52.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.53 (1).mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.53.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.54 (1).mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.54.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.55.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.56.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.57.mp4',
+  'WhatsApp Video 2026-03-02 at 21.10.58.mp4',
+];
+
+const demosGrid = document.getElementById('demos-grid');
+if (demosGrid) {
+  demosGrid.innerHTML = demoVideoFiles.map((file, idx) => {
+    const src = `demos/${encodeURIComponent(file)}`;
+    return `
+      <article class="demo-card" data-animate>
+        <video controls preload="metadata" playsinline>
+          <source src="${src}" type="video/mp4">
+          Tu navegador no soporta video HTML5.
+        </video>
+        <div class="demo-meta">Demo ${idx + 1}</div>
+      </article>
+    `;
+  }).join('');
+}
+
 // ——— Intersection Observer for scroll animations ———
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -108,9 +144,11 @@ form.addEventListener('submit', (e) => {
 // ——— Smooth scroll for anchor links ———
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
+    const href = a.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
     if (target) {
+      e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });

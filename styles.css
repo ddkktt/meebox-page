@@ -89,6 +89,29 @@ nav.scrolled {
   position: relative;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--cyan);
+  border-color: var(--border);
+}
+
 .nav-cta:hover {
   color: var(--crimson);
   border-color: var(--crimson);
@@ -492,6 +515,63 @@ section { padding: 7rem 2rem; }
   transform: none;
 }
 
+/* ——— DEMOS ——— */
+.demos {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.demos-header {
+  max-width: 1200px;
+  margin: 0 auto 2.25rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+
+.demos-header.visible { opacity: 1; transform: none; }
+
+.demos-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.demo-card {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.demo-card.visible { opacity: 1; transform: none; }
+
+.demo-card:hover {
+  border-color: var(--crimson);
+  box-shadow: 0 0 24px rgba(220, 20, 60, 0.15);
+}
+
+.demo-card video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.demo-meta {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+  padding: 0.7rem 0.8rem;
+}
+
 /* ——— BENEFITS ——— */
 .benefits {
   background: var(--surface);
@@ -827,6 +907,7 @@ footer {
   .benefits-inner { grid-template-columns: 1fr; gap: 3rem; }
   .quote-inner { grid-template-columns: 1fr; gap: 3rem; }
   .quote-header { position: static; }
+  .demos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 768px) {
@@ -839,6 +920,14 @@ footer {
     font-size: 0.7rem;
     padding: 0.5rem 1rem;
     letter-spacing: 0.1em;
+  }
+
+  .nav-links { gap: 0.3rem; }
+
+  .nav-link {
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    padding: 0.45rem 0.55rem;
   }
 
   section { padding: 4rem 1.25rem; }
@@ -885,6 +974,10 @@ footer {
   .config-card p { font-size: 0.82rem; opacity: 1; transform: none; }
   .config-card-icon { width: 34px; height: 34px; margin-bottom: 0.75rem; }
   .config-card-icon svg { width: 15px; height: 15px; }
+
+  .demos-header { margin-bottom: 1.5rem; }
+  .demos-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+  .demo-meta { font-size: 0.64rem; }
 
   .benefits-inner { gap: 2.5rem; }
   .benefits-header .section-title br { display: none; }
