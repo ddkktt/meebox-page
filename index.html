@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -195,14 +196,7 @@
       </div>
     </div>
 
-    <form class="quote-form" data-animate action="https://formsubmit.co/ckochone@gmail.com" method="POST">
-      <!-- FormSubmit config -->
-      <input type="hidden" name="_subject" value="Nueva cotización - Meebox">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://ddkktt.github.io/meebox-page/thanks.html">
-      <input type="text" name="_honey" style="display:none">
-
+    <form class="quote-form" data-animate id="contact-form">
       <div class="form-row">
         <div class="form-group">
           <label>Nombre <span class="req">*</span></label>
